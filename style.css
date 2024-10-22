@@ -1,0 +1,175 @@
+* {
+  text-decoration: none;
+  list-style: none;
+}
+body {
+  background-color: #efe859;
+}
+
+.navbar-nav a {
+  color: white;
+  font-size: 20px;
+}
+.navbar-toggler-icon {
+  background-color: white;
+}
+.navbar-nav a:hover {
+  color: yellow;
+}
+.navbar-nav span{
+  color: white;
+  display: flex;
+  background-color: gold;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.cart-wrapper {
+  position: relative;
+}
+
+.cart-wrapper .cart-count {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+}
+
+
+.home span {
+  font-size: 25px;
+}
+
+.home{
+  background-color: gold;
+}
+
+.home p{
+ 
+  font-size: 20px;
+  text-align: center;
+  margin-top: 100px;
+  margin-left: 50px;
+  
+ 
+}
+
+.col img{
+  margin-top: 50px;
+  margin-left: 80px;
+  margin-bottom: 30px;
+}
+
+
+.items .card img {
+  height: 300px;
+  width: 300px;
+  margin-top: 20px;
+}
+.items .card {
+  align-items: center;
+  background-color: #efe859;
+  width: 500px;
+  align-items: center;
+}
+.items h1 {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.contact ul {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 30px;
+  padding: 20px 0;
+}
+.contact li {
+  font-size: 20px;
+  color: gold;
+}
+
+.contact {
+  background-color: black;
+}
+.contact a {
+  text-decoration: none;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Navbar adjustments */
+  .navbar-brand img {
+    width: 150px;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .home p {
+    font-size: 16px;
+    margin-top: 50px;
+    margin-left: 20px;
+  }
+
+  .col img {
+    width: 100%;
+    margin: 0;
+  }
+
+  /* Items section adjustments */
+  .items .card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .items .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Contact section adjustments */
+  .contact ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact li {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjustments for extra small screens */
+  .home p {
+    font-size: 14px;
+    margin-top: 30px;
+  }
+
+  .items h1 {
+    font-size: 24px;
+    margin-top: 40px;
+  }
+
+  .contact li {
+    font-size: 16px;
+  }
+
+  .navbar-nav span {
+    width: 25px;
+    height: 25px;
+    font-size: 10px;
+  }
+}
+
