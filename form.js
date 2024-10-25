@@ -7,7 +7,13 @@ const summaryItems = document.getElementById('summary-items');
 cart.forEach(item => {
   const listItem = document.createElement('li');
   listItem.classList.add('list-group-item');
-  listItem.innerText = `${item.product} (Size: ${item.size}) - Rs.${item.price}`;
+  
+  // Calculate total price for the item based on its quantity
+  const itemTotalPrice = item.price * item.quantity; // Total price for this item
+  
+  // Display the product details along with the calculated total price
+  listItem.innerText = `${item.product} (Size: ${item.size}) (Quantity: ${item.quantity}) - Total: Rs.${itemTotalPrice}`;
+  
   summaryItems.appendChild(listItem);
 });
 
