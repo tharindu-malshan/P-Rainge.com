@@ -43,6 +43,12 @@
               <input type="radio" name="regular-size" value="XL"> XL
               <input type="radio" name="regular-size" value="XXL"> XXL
             </div>
+            <!-- Quantity Selection -->
+            <div class="quantity-container">
+              <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
+              <input type="number" id="quantity" name="quantity" min="1" value="1">
+              <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+            </div>
             <button class="btn btn-warning add-to-cart" data-product="White collarless T-shirt (Regular Size)">Add to
               Cart</button>
             <div class="setup">
@@ -60,6 +66,12 @@
                 <input type="radio" name="oversized-size" value="L"> L
                 <input type="radio" name="oversized-size" value="XL"> XL
                 <input type="radio" name="oversized-size" value="XXL"> XXL
+              </div>
+              <!-- Quantity Selection -->
+              <div class="quantity-container">
+                <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
               </div>
 
               <button class="btn btn-warning add-to-cart" data-product="White collarless T-shirt (Oversized)">Add to
@@ -87,6 +99,12 @@
               <input type="radio" name="regular-size" value="XL"> XL
               <input type="radio" name="regular-size" value="XXL"> XXL
             </div>
+            <!-- Quantity Selection -->
+            <div class="quantity-container">
+              <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
+              <input type="number" id="quantity" name="quantity" min="1" value="1">
+              <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
+            </div>
             <button class="btn btn-warning add-to-cart" data-product="Black collarless T-shirt (Regular Size)">Add to
               Cart</button>
             <div class="setup">
@@ -104,6 +122,11 @@
                 <input type="radio" name="oversized-size" value="L"> L
                 <input type="radio" name="oversized-size" value="XL"> XL
                 <input type="radio" name="oversized-size" value="XXL"> XXL
+              </div>
+              <div class="quantity-container">
+                <button class="quantity-btn" onclick="decreaseQuantity(this)">-</button>
+                <input type="number" id="quantity" name="quantity" min="1" value="1">
+                <button class="quantity-btn" onclick="increaseQuantity(this)">+</button>
               </div>
               <button class="btn btn-warning add-to-cart" data-product="Black collarless T-shirt (Oversized)">Add to
                 Cart</button>
@@ -127,3 +150,4 @@
 </body>
 
 </html>
+    
