@@ -1,5 +1,4 @@
-
-  // Load cart from localStorage
+ // Load cart from localStorage
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Select elements
@@ -19,8 +18,9 @@ function displayCartItems() {
       const listItem = document.createElement('li');
       listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
       
-      // Display the product with its size and price
-      listItem.innerHTML = `${item.product} (Size: ${item.size}) - Rs.${item.price} 
+      // Display the product with its size, quantity, and total price for that item
+      const itemTotalPrice = item.price * item.quantity;
+      listItem.innerHTML = `${item.product} (Size: ${item.size}, Quantity: ${item.quantity}) - Rs.${itemTotalPrice}
                             <span class="badge bg-primary rounded-pill">Remove</span>`;
 
       // Remove item button functionality
@@ -30,8 +30,8 @@ function displayCartItems() {
 
       cartItemList.appendChild(listItem);
 
-      // Add price to the total amount
-      totalAmount += item.price;
+      // Add item total price to the overall total amount
+      totalAmount += itemTotalPrice;
     });
   }
 
@@ -55,6 +55,7 @@ document.getElementById('clear-cart').addEventListener('click', () => {
 
 // Initial display of cart items
 displayCartItems();
+
 document.getElementById('nextButton').addEventListener('click', () => {
   // Store cart and total amount in localStorage
   localStorage.setItem('cart', JSON.stringify(cart));
