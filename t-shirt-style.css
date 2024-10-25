@@ -48,6 +48,37 @@
 .card-title{
   font-size: 25px;
 }
+/* Quantity input style */
+.quantity-container {
+  display: flex;
+  align-items: center;
+}
+
+input[type="number"] {
+  width: 60px;
+  text-align: center;
+}
+
+/* Custom arrow buttons */
+.quantity-btn {
+  width: 24px;
+  height: 24px;
+  background-color:gold;
+  color:black;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  margin: 0 5px;
+  border-radius: 10px;
+}
+
+.quantity-btn:hover {
+  background-color: #e67e22;
+}
+
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
