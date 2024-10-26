@@ -15,6 +15,12 @@ form {
   margin: auto;
 }
 
+.top-img {
+  width: 300px;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
 h1 {
   text-align: center;
   color: #333;
@@ -91,4 +97,78 @@ button:hover {
   display: none;
   /* Hidden by default */
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  form {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .top-img {
+    width: 200px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .form-group input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .sub-btn {
+    font-size: 14px;
+    padding: 12px;
+  }
+
+  #order-summary h2 {
+    font-size: 20px;
+  }
+
+  #order-total {
+    font-size: 16px;
+  }
+}
+
+/* Smaller screens (mobile devices) */
+@media (max-width: 480px) {
+  form {
+    width: 95%;
+    padding: 10px;
+  }
+
+  .top-img {
+    width: 150px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .sub-btn {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  #order-summary h2 {
+    font-size: 18px;
+  }
+
+  #order-items li {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  #order-total {
+    font-size: 14px;
+  }
+}
+
  
