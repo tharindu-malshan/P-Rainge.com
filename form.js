@@ -1,56 +1,67 @@
-// Retrieve cart data and total amount from localStorage
-const cart = JSON.parse(localStorage.getItem('cart')) || [];
-const totalAmount = localStorage.getItem('totalAmount');
+// Retrieve cart data from localStorage
+const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+const totalAmount = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-// Display cart items in the order summary
-const summaryItems = document.getElementById('summary-items');
-cart.forEach(item => {
+// Display the cart items and total amount
+const orderItemsList = document.getElementById('order-items');
+cartItems.forEach(item => {
   const listItem = document.createElement('li');
-  listItem.classList.add('list-group-item');
-  
-  // Calculate total price for the item based on its quantity
-  const itemTotalPrice = item.price * item.quantity; // Total price for this item
-  
-  // Display the product details along with the calculated total price
-  listItem.innerText = `${item.product} (Size: ${item.size}) (Quantity: ${item.quantity}) - Total: Rs.${itemTotalPrice}`;
-  
-  summaryItems.appendChild(listItem);
+  listItem.innerHTML = `<span>${item.product} (Size: ${item.size}, Quantity: ${item.quantity})</span>
+                        <span>Rs.${item.price * item.quantity}</span>`;
+  orderItemsList.appendChild(listItem);
 });
 
-// Display total amount
-document.getElementById('summary-total').innerText = totalAmount;
+// Display the total amount
+document.getElementById('order-total').textContent = `Total Amount: Rs.${totalAmount}`;
 
-// JavaScript form validation
-const form = document.getElementById('checkoutForm');
+// Handle form submission
+document.getElementById('checkout-form').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent the default form submission
 
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
+  // Prepare order details as a string
+  let orderDetails = cartItems.map(item =>
+    `${item.product} (Size: ${item.size}, Quantity: ${item.quantity}) - Rs.${item.price * item.quantity}`
+  ).join('\n');
+  orderDetails += `\n\nTotal Amount: Rs.${totalAmount}`;
 
-  // Check if the form is valid
-  if (!form.checkValidity()) {
-    event.stopPropagation();
-    form.classList.add('was-validated');
-    return;
-  }
+  // Create a data object to send
+  const formData = {
+    access_key: this.access_key.value,
+    name: this.name.value,
+    email: this.email.value,
+    contact_number: this['contact-number'].value,
+    address: this.address.value,
+    order_details: orderDetails,
+  };
 
-  // Collect form data
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const telephone = document.getElementById('telephone').value;
-  const address = document.getElementById('address').value;
+  // Alert before sending the order
+  alert('Your Order Sent Successfully!');
 
-  // Display confirmation
-  alert(`Order placed successfully!\n\nName: ${name}\nEmail: ${email}\nTelephone: ${telephone}\nAddress: ${address}`);
-
-  // Clear form data
-  form.reset();
-  form.classList.remove('was-validated');
-
-  // Clear cart data from localStorage
-  localStorage.removeItem('cart');
-  localStorage.removeItem('totalAmount');
-
-  // Optionally clear the order summary display
-  summaryItems.innerHTML = '';
-  document.getElementById('summary-total').innerText = '';
+  // Send the form data using Fetch API
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(formData),
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        // Display success message
+        document.getElementById('success-message').style.display = 'block';
+        // Optionally clear the cart
+        localStorage.removeItem('cart');
+        setTimeout(() => {
+          window.location.href = 'index.html'; // Redirect to another page after success
+        }, 3000);
+      } else {
+        alert('Error placing the order. Please try again.');
+      }
+    })
+    .catch(error => {
+      alert('An error occurred while placing the order. Please try again.');
+      console.error('Error:', error);
+    });
 });
+
