@@ -56,13 +56,17 @@ document.getElementById('clear-cart').addEventListener('click', () => {
 // Initial display of cart items
 displayCartItems();
 
+// Handle "Next" button click
 document.getElementById('nextButton').addEventListener('click', () => {
   // Store cart and total amount in localStorage
   localStorage.setItem('cart', JSON.stringify(cart));
 
-  const totalAmount = document.getElementById('total-amount').innerText;
+  // Get the total amount from the displayed text
+  const totalAmount = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   localStorage.setItem('totalAmount', totalAmount);
 
-  // Navigate to form.html (correct the path here)
+  // Navigate to form.html
   window.location.href = 'form.html'; // Adjust path based on your project structure
 });
+
+     
