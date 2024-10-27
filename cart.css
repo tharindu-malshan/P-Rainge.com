@@ -4,6 +4,10 @@ body {
   font-family: 'Arial', sans-serif;
   color: #333;
 }
+.top-img{
+  width: 300px;
+  margin-left: 30%;
+}
 
 /* Container for Cart */
 .cart-container {
@@ -116,6 +120,12 @@ h2 {
 @media (max-width: 768px) {
   .cart-container {
       padding: 20px;
+  }
+
+   .top-img {
+    width: 80%;
+    margin: 0 auto;
+    display: block;
   }
 
   h2 {
